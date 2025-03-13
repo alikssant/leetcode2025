@@ -21,6 +21,9 @@ var reverseWords = function (s) {
 
   return finalresult;
 };
+// function reverseWords(s) {
+//     return s.trim().split(/\s+/).reverse().join(" ");
+// }
 
 s = "       the        sky is   blue       ";
 console.log(reverseWords(s));
