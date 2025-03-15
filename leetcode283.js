@@ -1,30 +1,31 @@
-// var moveZeroes = function (nums) {
-//   let i = 0;
-//   while (i < nums.length) {
-//     if (nums[i] === 0) {
-//       let temp = nums[i];
-//       for (let j = i; j < nums.length - 1; j++) {
-//         nums[j] = nums[j + 1];
-//       }
-//       nums[nums.length - 1] = temp;
-//     }
+// brute force solution
 
-//     i++;
+// var moveZeroes = function (nums) {
+//   for (let i = 0; i < nums.length; i++) {
+//     let j = 0;
+//     while (j < nums.length - 1) {
+//       if (nums[j] == 0) {
+//         let temp = nums[j];
+//         nums[j] = nums[j + 1];
+//         nums[j + 1] = temp;
+//       }
+//       j++;
+//     }
 //   }
 //   return nums;
 // };
+
 var moveZeroes = function (nums) {
-  let i = 0;
-  //let j = i + 1;
-  while (i < nums.length - 1) {
-    if (nums[i] === 0) {
-      let temp = nums[i];
-      nums[i] = nums[i + 1];
-      nums[i + 1] = temp;
+  let left = 0;
+  for (let right = 0; right < nums.length; right++) {
+    if (nums[right]) {
+      [nums[left], nums[right]] = [nums[right], nums[left]];
+
+      left++;
     }
-    i++;
   }
   return nums;
 };
-let nums = [0, 0, 1];
+
+let nums = [1, 1, 2];
 console.log(moveZeroes(nums));
