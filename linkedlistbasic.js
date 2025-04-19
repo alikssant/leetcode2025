@@ -30,22 +30,44 @@ class LinkedList {
   }
 
   getTail() {
-    if (this.head === null) {
+    if (this.tail === null) {
       console.log("Tail: null");
     } else {
-      console.log("Tail " + this.tail.value);
+      console.log("Tail: " + this.tail.value);
     }
   }
 
   getLength() {
-    console.log("Length " + this.length);
+    console.log("Length: " + this.length);
+  }
+
+  makeEmpty() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  push(value) {
+    const newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+    this.length++;
+    return this;
   }
 }
 
-let myLinkedList = new LinkedList(4);
+let myLinkedList = new LinkedList(1);
+//myLinkedList.makeEmpty();
+myLinkedList.push(5);
+myLinkedList.push(2);
 
 myLinkedList.getHead();
 myLinkedList.getTail();
 myLinkedList.getLength();
-
 console.log("\nLinked List:");
+myLinkedList.printList();
