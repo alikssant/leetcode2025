@@ -160,28 +160,55 @@ class LinkedList {
     this.length--;
     return temp;
   }
+  reverse() {
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+    let next = temp.next;
+    let prev = null;
+    for (let i = 0; i < this.length; i++) {
+      next = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp = next;
+    }
+    return this;
+  }
 }
+
+// let myLinkedList = new LinkedList(1);
+// myLinkedList.push(2);
+// myLinkedList.push(3);
+// myLinkedList.push(4);
+// myLinkedList.push(5);
+
+// console.log("LL before remove():");
+// myLinkedList.printList();
+
+// console.log("\nRemoved node:");
+// console.log(myLinkedList.remove(2).value);
+// console.log("LL after remove() in middle:");
+// myLinkedList.printList();
+
+// console.log("\nRemoved node:");
+// console.log(myLinkedList.remove(0).value);
+// console.log("LL after remove() of first node:");
+// myLinkedList.printList();
+
+// console.log("\nRemoved node:");
+// console.log(myLinkedList.remove(2).value);
+// console.log("LL after remove() of last node:");
+// myLinkedList.printList();
 
 let myLinkedList = new LinkedList(1);
 myLinkedList.push(2);
 myLinkedList.push(3);
 myLinkedList.push(4);
-myLinkedList.push(5);
 
-console.log("LL before remove():");
+console.log("LL before reverse():");
 myLinkedList.printList();
 
-console.log("\nRemoved node:");
-console.log(myLinkedList.remove(2).value);
-console.log("LL after remove() in middle:");
-myLinkedList.printList();
+myLinkedList.reverse();
 
-console.log("\nRemoved node:");
-console.log(myLinkedList.remove(0).value);
-console.log("LL after remove() of first node:");
-myLinkedList.printList();
-
-console.log("\nRemoved node:");
-console.log(myLinkedList.remove(2).value);
-console.log("LL after remove() of last node:");
+console.log("\nLL after reverse():");
 myLinkedList.printList();
