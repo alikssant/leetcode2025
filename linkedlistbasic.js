@@ -123,15 +123,43 @@ class LinkedList {
     }
     return false;
   }
+
+  insert(index, value) {
+    if (index === 0) {
+      return this.unshift(value);
+    }
+    if (index === this.length) {
+      return this.push(value);
+    }
+    if (index < 0 || index > this.length) {
+      return false;
+    }
+    const newNode = new Node(value);
+    const temp = this.get(index - 1);
+    newNode.next = temp.next;
+    temp.next = newNode;
+    this.length++;
+    return true;
+  }
 }
 
 let myLinkedList = new LinkedList(1);
-//myLinkedList.makeEmpty();
-myLinkedList.push(5);
-myLinkedList.push(2);
+myLinkedList.push(3);
 
-myLinkedList.getHead();
-myLinkedList.getTail();
-myLinkedList.getLength();
-console.log("\nLinked List:");
+console.log("LL before insert():");
+myLinkedList.printList();
+
+myLinkedList.insert(1, 2);
+
+console.log("\nLL after insert(2) in middle:");
+myLinkedList.printList();
+
+myLinkedList.insert(0, 0);
+
+console.log("\nLL after insert(0) at beginning:");
+myLinkedList.printList();
+
+myLinkedList.insert(4, 4);
+
+console.log("\nLL after insert(4) at end:");
 myLinkedList.printList();
